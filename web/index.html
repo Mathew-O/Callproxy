@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CallProxy places phone calls for you and streams a live transcript." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;700&family=Atkinson+Hyperlegible+Next:ital,wght@0,400..800;1,400..800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved theme and caption size before first paint so nothing flashes.
+      (function () {
+        var root = document.documentElement;
+        var prefs = {};
+        try {
+          prefs = JSON.parse(localStorage.getItem("callproxy:prefs") || "{}") || {};
+        } catch (e) {}
+        var dark = prefs.theme === "dark" || (prefs.theme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+        root.dataset.theme = dark ? "dark" : "light";
+        root.dataset.caption = prefs.caption === "lg" || prefs.caption === "xl" ? prefs.caption : "md";
+      })();
+    </script>
+    <title>CallProxy</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

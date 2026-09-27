@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receptionist cue card — CallProxy demo</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #0f172a;
+        --muted: #334155;
+        --accent: #4338ca;
+        --line: #cbd5e1;
+        --say: #eef2ff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #f1f5f9;
+        color: var(--ink);
+        font: 18px/1.45 "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main {
+        max-width: 46rem;
+        margin: 2rem auto;
+        padding: 2rem 2.25rem;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+      }
+      .eyebrow { margin: 0; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem; }
+      h1 { margin: 0.25rem 0 0.5rem; font-size: 2rem; line-height: 1.15; }
+      .lede { margin: 0 0 1.25rem; color: var(--muted); }
+      ol { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+      li { counter-increment: step; position: relative; padding: 0.8rem 0 0.8rem 3rem; border-top: 1px solid var(--line); }
+      li::before {
+        content: counter(step);
+        position: absolute; left: 0; top: 0.8rem;
+        width: 2rem; height: 2rem; border-radius: 0.5rem;
+        display: grid; place-items: center;
+        background: var(--accent); color: #fff; font-weight: 700;
+      }
+      .say {
+        display: block; margin-top: 0.35rem; padding: 0.5rem 0.75rem;
+        background: var(--say); border-left: 4px solid var(--accent); border-radius: 0.35rem;
+        font-size: 1.2rem; font-weight: 700;
+      }
+      .note { color: var(--muted); font-size: 0.95rem; }
+      .bonus { margin-top: 1.25rem; padding: 0.9rem 1rem; border: 2px dashed var(--line); border-radius: 0.75rem; }
+      .bonus h2 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+      .bonus p { margin: 0; }
+      .print { margin-top: 1.25rem; font: inherit; font-weight: 700; padding: 0.6rem 1.1rem; border-radius: 0.6rem; border: 2px solid var(--accent); background: #fff; color: var(--accent); cursor: pointer; }
+      @media print {
+        body { background: #fff; font-size: 16px; }
+        main { margin: 0; border: 0; padding: 0; max-width: none; }
+        .print { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">CallProxy live demo</p>
+      <h1>You're the receptionist at Dr. Rivera's dental office</h1>
+      <p class="lede">
+        Your phone will ring. The caller is Jordan Lee, who is Deaf. Jordan types, and a computer voice reads their
+        words to you. Partway through, an AI assistant takes over for Jordan. Put the phone on speaker, talk at a normal
+        pace, and pause after each sentence.
+      </p>
+      <ol>
+        <li>
+          Answer the call:
+          <span class="say">"Dr. Rivera's office, how can I help you?"</span>
+          <span class="note">Jordan's voice will introduce them and explain they're typing. Give it a moment.</span>
+        </li>
+        <li>
+          After Jordan's introduction, say:
+          <span class="say">"No problem at all. How can I help you today?"</span>
+        </li>
+        <li>
+          When Jordan asks to book a cleaning, ask for the date of birth:
+          <span class="say">"Sure! What's the patient's date of birth?"</span>
+        </li>
+        <li>
+          Offer exactly two times:
+          <span class="say">"Thanks. I have Thursday at 3 PM or Friday at 10 AM. Which works better?"</span>
+          <span class="note">Now an AI assistant picks up for Jordan. It will say "one moment" while Jordan chooses on screen. Wait for it.</span>
+        </li>
+        <li>
+          Confirm whichever time it picks, and give a confirmation number:
+          <span class="say">"You're all set. Your confirmation number is R-C-4-8-2-1."</span>
+        </li>
+        <li>
+          When the assistant reads the details back, confirm and say goodbye:
+          <span class="say">"That's right. See you then, bye!"</span>
+        </li>
+      </ol>
+      <div class="bonus">
+        <h2>Want to test it? (optional)</h2>
+        <p>
+          While Jordan is typing, talk fast or mumble on purpose. Jordan can tap <strong>"Could you repeat that?"</strong>
+          or <strong>"Please speak slower."</strong> Later, ask the assistant for something Jordan never gave it, like the
+          insurance member ID. It won't make one up. It checks with Jordan on screen.
+        </p>
+      </div>
+      <button class="print" type="button" onclick="window.print()">Print this card</button>
+    </main>
+  </body>
+</html>
