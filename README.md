@@ -112,7 +112,7 @@ FastAPI bridge ── REST ──▶ Twilio Voice ──▶ callee's phone      
 
 - **The composer is the heart of the call screen:** type and press Enter to speak, pick your voice right in the input row, and use one-tap phrases ("Introduce me", "Could you repeat that?", "Please speak slower"). Take over or hand back with one button.
 - **Voices:** a picker lists ElevenLabs voices with previews. With a key it lists your whole library, cloned voices included. Without one it shows ElevenLabs' premade voices.
-- **Speaking orb:** while the other person talks, an animated orb (think ChatGPT's voice orb or Siri) floats beside the captions and pulses with each new word. On phones it sits under the newest caption instead of covering it.
+- **Voice bars:** while the other person talks, four vertical audio bars bounce beside the captions, then settle into dots when they stop. On phones they sit under the newest caption instead of covering it.
 - **Who's talking:** chips light up when the agent or the callee is speaking, before their words arrive. Hearing callers get this for free; Deaf users otherwise can't tell "they're answering" from "the line went quiet".
 - **Captions you control:** three caption sizes, light/dark/system themes, and per-line timestamps. Settings are remembered and applied before first paint.
 - **Call preview:** before dialing, the compose page shows the agent's opening line, what it may share, what it will never say (sensitive facts are flagged as you type), and when it will ask you.
