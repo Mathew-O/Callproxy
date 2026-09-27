@@ -8,7 +8,7 @@ import { CallTimer } from "../components/CallTimer";
 import { Composer } from "../components/Composer";
 import { DecisionCard } from "../components/DecisionCard";
 import { Participants } from "../components/Participants";
-import { SpeakingOrb } from "../components/SpeakingOrb";
+import { VoiceActivity } from "../components/VoiceActivity";
 import { StatusPill } from "../components/StatusPill";
 import { CaptionControl } from "../components/TopBar";
 import { Transcript } from "../components/Transcript";
@@ -42,7 +42,6 @@ export function LiveCall({ call, clockOffset, connection, config, audio }: Props
   const myVoiceId = chosenVoice ?? task.my_voice_id ?? config?.default_my_voice_id ?? voices[0]?.voice_id ?? null;
   const myVoiceName = voices.find((v) => v.voice_id === myVoiceId)?.name ?? "your voice";
   const deciding = !!question && !question.timed_out;
-  const calleePartial = [...call.transcript].reverse().find((t) => t.speaker === "callee" && !t.final)?.text ?? "";
 
   const hangUp = async () => {
     setHangingUp(true);
@@ -128,7 +127,7 @@ export function LiveCall({ call, clockOffset, connection, config, audio }: Props
       </header>
 
       <main className="relative flex min-h-0 flex-1 flex-col">
-        <SpeakingOrb variant="float" speaking={call.speaking.callee} name={task.callee_name} partial={calleePartial} />
+        <VoiceActivity variant="float" speaking={call.speaking.callee} name={task.callee_name} />
         <Transcript
           live
           turns={call.transcript}
@@ -136,7 +135,7 @@ export function LiveCall({ call, clockOffset, connection, config, audio }: Props
           startedAt={call.answered_at}
           empty={<EmptyState call={call} />}
           pinKey={`${question?.question_id ?? ""}${call.mode}`}
-          after={<SpeakingOrb variant="inline" speaking={call.speaking.callee} name={task.callee_name} partial={calleePartial} />}
+          after={<VoiceActivity variant="inline" speaking={call.speaking.callee} name={task.callee_name} />}
         />
         {question && (
           <DecisionCard

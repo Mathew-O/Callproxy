@@ -15,7 +15,7 @@ interface Props {
   /** Changes when something next to the transcript opens or closes (the decision card),
    *  so the view can re-pin in the same frame rather than waiting on a ResizeObserver. */
   pinKey?: string | null;
-  /** Rendered under the newest line, inside the scrolling area (the speaking orb on phones). */
+  /** Rendered under the newest line, inside the scrolling area (the voice bars on phones). */
   after?: ReactNode;
 }
 
